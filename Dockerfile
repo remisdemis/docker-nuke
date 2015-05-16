@@ -17,7 +17,7 @@
 #       -v /dev/nvidia0:/dev/nvidia0 \
 #       -v /dev/nvidiactl:/dev/nvidiactl \
 #       --privileged nuke
-# Base Docker Image
+# Base Docker Image.
 FROM centos:6.6
 MAINTAINER Timon Relitzki <timonrelitzki@gmail.com>
 
@@ -35,18 +35,18 @@ ENV NV_VERSION 331.20
 RUN wget -P /tmp/ \
     http://us.download.nvidia.com/XFree86/Linux-x86_64/$NV_VERSION/NVIDIA-Linux-x86_64-$NV_VERSION.run && \
     sh /tmp/NVIDIA-Linux-x86_64-$NV_VERSION.run -a -N --ui=none --no-kernel-module
-# Cleanup the NVIDIA Installer
+# Cleanup the NVIDIA Installer.
 RUN rm -f /tmp/NVIDIA-Linux-x86_64-$NV_VERSION.run
 
 # Install Nuke itself.
 RUN wget -P /tmp/ \
     http://thefoundry.*.com/products/nuke/releases/$NK_VERSION/Nuke$NK_VERSION-linux-x86-release-64.tgz && \
     tar xvzf /tmp/Nuke$NK_VERSION-linux-x86-release-64.tgz -C /tmp
-# Cleanup the .tgz File
+# Cleanup the .tgz File.
 RUN rm -f /tmp/Nuke$NK_VERSION-linux-x86-release-64.tgz
 
 RUN unzip /tmp/Nuke$NK_VERSION-linux-x86-release-64-installer -d Nuke$NK_VERSION
-# Cleanup the Nuke Installer
+# Cleanup the Nuke Installer.
 RUN rm -f /tmp/Nuke$NK_VERSION-linux-x86-release-64-installer
 
 
