@@ -19,6 +19,7 @@
 #       -v /dev/nvidia0:/dev/nvidia0 \
 #       -v /dev/nvidiactl:/dev/nvidiactl \
 #       --privileged nuke
+
 # Base Docker Image.
 FROM centos:6.6
 MAINTAINER Timon Relitzki <timonrelitzki@gmail.com>
@@ -51,12 +52,17 @@ RUN unzip /tmp/Nuke$NK_VERSION-linux-x86-release-64-installer -d Nuke$NK_VERSION
 # Cleanup the Nuke Installer.
 RUN rm -f /tmp/Nuke$NK_VERSION-linux-x86-release-64-installer
 
-
 # Create a User and switch to it. Nuke does not work well under root User.
 RUN groupadd -r nuke && \
     useradd -r -g nuke nuke
 USER nuke
 
+# Mount Volumes.
+
+
+# Set additional ENV's specially for Nuke
+ENV FOUNDRY_LICENSE_FILE /usr/local/foundry/FLEXlm
+ENV NUKE_DISK_CACHE /tmp/nuke
 
 ENTRYPOINT Nuke$NK_VERSION/Nuke$NK_MAJOR_RELEASE
 # Entry Flags.
