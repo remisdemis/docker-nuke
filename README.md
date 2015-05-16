@@ -7,8 +7,8 @@ Tested on Fedora 19 and CentOS 6.6 as host machines.
 ### to build
     wget http://raw.githubusercontent.com/remisdemis/docker-nuke/master/Dockerfile
 
-    Then change the ENV's to whatever you need to install.
-    Also you need to specify where your installer of Nuke is located.
+Then change the ENV's to whatever you need to install.
+Also you need to specify where your installer of Nuke is located.
 
     docker build -t nuke .
 
