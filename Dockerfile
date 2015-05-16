@@ -8,7 +8,9 @@
 # USAGE:
 #   # Download Nuke Dockerfile
 #   wget http://raw.githubusercontent.com/remisdemis/docker-nuke/master/Dockerfile
-#   # On line 43 setup where your Nuke Installer Download is located.
+#   # Set the ENV's NK_VERSION, NK_MAJOR_VERSION and NV_VERSION according to match
+#   # the version you wan't to build.
+#   # On line 45 setup where your Nuke Installer Download is located.
 #   # Build Nuke image
 #   docker build -t nuke .
 #   # Run GUI enabled Nuke in the Container
